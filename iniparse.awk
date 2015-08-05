@@ -3,16 +3,15 @@
 
 /^\[/ {
   cur_category = substr($0, 2, length-2)
-  print_car = 1
+  hide_car = 0
   next
 }
 
 /= ?$/ { next }
 
 {
-  if (print_car) {
+  if (!hide_car++) {
     printf("[%s]\n", toupper(cur_category))
-    print_car = 0
   }
   gsub(tolower(cur_category) ".", "")
   gsub(/ = /, "=")
