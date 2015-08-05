@@ -7,11 +7,14 @@
   next
 }
 
+/= ?$/ { next }
+
 {
   if (print_car) {
     printf("[%s]\n", toupper(cur_category))
     print_car = 0
   }
   gsub(tolower(cur_category) ".", "")
+  gsub(/ = /, "=")
   print tolower($0)
 }
