@@ -9,9 +9,7 @@ if (/^\[/) {
 
 next if /= ?$/;
 
-if (!$hide_car++) {
-  printf("[%s]\n", uc($cur_category));
-}
+printf("[%s]\n", uc($cur_category)) unless $hide_car++;
 s/^$cur_category\.//i;
 s/ = ?/=/;
 print lc
